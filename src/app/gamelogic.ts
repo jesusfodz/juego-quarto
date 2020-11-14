@@ -100,8 +100,6 @@ export class Gamelogic {
 
         const checkarray = this.winCombinaciones;
 
-        //console.log(checkarray);
-
         const currentarray = [
             [this.gameField[0], this.gameField[1], this.gameField[2], this.gameField[3]],
             [this.gameField[4], this.gameField[5], this.gameField[6], this.gameField[7]],
@@ -117,16 +115,6 @@ export class Gamelogic {
             [this.gameField[3], this.gameField[6], this.gameField[9], this.gameField[12]],
         ];
 
-        //  this.gameField.forEach((subfield, index) => {
-        // if(subfield !== this.currentTurn){
-        //     currentarray[index]=0;
-        // }else{
-        //currentarray[index] = subfield;
-        // }
-        //  });
-
-        //console.log(". "+currentarray[0]);
-        //console.log(".. " + this.winCombinaciones[0]);
         currentarray.forEach((checkfield1, checkindex1) => {
             checkarray.forEach((checkfield2, checkindex2) => {
                 if (this.arrayEquals(checkfield2, checkfield1)) {

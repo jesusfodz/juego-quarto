@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Gamelogic } from '../gamelogic';
+declare var $: any;
 
 @Component({
   selector: 'app-game',
@@ -25,6 +26,7 @@ export class GameComponent implements OnInit {
     const information = document.querySelector('.current-status');
     information.innerHTML = currentPlayer;
     this.seleccionado = false;
+    $("#clon").empty();
     //console.log(this.opcion);
   }
 
@@ -38,12 +40,16 @@ export class GameComponent implements OnInit {
     await this.game.checkGameEndWinner().then((end: boolean) => {
       if (this.game.gameStatus === 0 && end) {
         information.innerHTML = 'El ganador es Player. ' + (this.opcion === this.listaOpcion[0] && this.game.currentTurn === 2 ? 'CPU' : this.game.currentTurn);
+       
+        $("#gameboard").clone(true).appendTo("#clon");
       }
     });
 
     await this.game.checkGameEndFull().then((end: boolean) => {
       if (this.game.gameStatus === 0 && end) {
         information.innerHTML = 'No hay ganador, empate';
+
+        $("#gameboard").clone(true).appendTo("#clon");
       }
     });
 
